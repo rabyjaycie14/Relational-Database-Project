@@ -1,0 +1,10 @@
+SELECT x.ProjectID, x.ProjectName, y.ActualSpent, y.PlannedBudget, y.BudgetRemaining FROM PROJECT x, PROJBUDGET y WHERE x.ProjectID = y.ProjectID;
+SELECT DISTINCT x.Emp_ID, x.FName, x.LName FROM EMPLOYEE x, WORKS_ON y WHERE x.SSN = y.SSN AND NOT EXISTS ((SELECT ProjectID FROM PROJECT) EXCEPT (SELECT ProjectID FROM WORKS_ON z WHERE z.ProjectID = y.ProjectID));
+SELECT x.ProjectName, x.ProjectStatus, x.ResourceStatus FROM PROJECT x, WORKS_ON y, EMPLOYEE z WHERE x.ProjectID = y.ProjectID AND y.SSN = z.SSN AND z.FName = 'Fname1' AND z.LName = 'Lname1';
+SELECT `LName`, `Emp_ID`, `SSN` FROM EMPLOYEE WHERE `FName` = 'Fname1';
+SELECT x.Emp_ID, x.LName, y.Street_No, y.Street_Name, y.City, y._State, y.ZipCode FROM EMPLOYEE x, ADDRESS y WHERE x.AddressID = y.AddressID;
+SELECT y.FName, y.LName, x.Emails, x.Phone_No FROM CONTACT_INFO x, EMPLOYEE y WHERE y.ContactID = x.ContactID;
+SELECT x.ProjectID, x.MName, x.Planned, x.Actual, x.Comment FROM MILESTONE x, PROJECT y WHERE x.ProjectID = y.ProjectID ORDER BY x.ProjectID;
+INSERT INTO EMPLOYEE VALUES (345118765, 1, 1, 'Joe', 'Muller', 6, 12345, 'M', 'Worker', '18-11-11', '1999-11-11');
+DELETE FROM PROJBUDGET WHERE PROJBUDGET.ProjectID = 1;
+UPDATE EMPLOYEE SET EMPLOYEE.Salary = EMPLOYEE.Salary * 2;
